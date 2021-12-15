@@ -10,6 +10,7 @@ const UserFlight = db.define('users_flight',{
             primaryKey:true,
         },
         user_id:{
+            allowNull:false,
             type:Sequelize.INTEGER,
             references:{
                 model:User,
@@ -17,6 +18,7 @@ const UserFlight = db.define('users_flight',{
             }
         },
         flight_id:{
+            allowNull:false,
             type:Sequelize.INTEGER,
             references:{
                 model:Flight,

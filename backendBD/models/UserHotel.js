@@ -10,6 +10,7 @@ const UserHotel = db.define('users_hotel',{
         autoIncrement:true
     },
     user_id:{
+            allowNull:false,
             type:Sequelize.INTEGER,
             references:{
                 model:User,
@@ -18,6 +19,7 @@ const UserHotel = db.define('users_hotel',{
             },
         },
     hotel_id:{
+        allowNull:false,
             type:Sequelize.INTEGER,
             references:{
                 model:Hotel,

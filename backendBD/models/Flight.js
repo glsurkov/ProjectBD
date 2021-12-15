@@ -30,7 +30,8 @@ const Flight = db.define('flight',{
             references: {
                 model:Airport,
                 key:'airport_id'
-            }
+            },
+            allowNull:false
         },
         arrival_date:{
             type:Sequelize.DATEONLY,
@@ -45,7 +46,8 @@ const Flight = db.define('flight',{
             references:{
                 model:Airport,
                 key:'airport_id'
-            }
+            },
+            allowNull:false
         },
         tickets_in_stock:{
             type:Sequelize.INTEGER,

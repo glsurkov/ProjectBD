@@ -7,9 +7,6 @@ const User = db.define('user',{
             autoIncrement:true,
             primaryKey:true
         },
-        contact_number:{
-            type:Sequelize.STRING,
-        },
         username:{
             type:Sequelize.STRING,
             allowNull:false,
