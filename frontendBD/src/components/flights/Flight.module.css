@@ -1,0 +1,40 @@
+.flight{
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(210, 247, 243);
+    color:rgb(98, 31, 128);
+    padding: 10px;
+    border: 4px solid white;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    height: 100px;
+}
+.card{
+    height: 100%;
+    padding-top: 0px;
+    display:flex;
+    margin-left:60px;
+    padding-right:20px;
+    border-right: 2px solid rgb(98, 31, 128) ;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center
+}
+
+.company{
+    position:relative;
+}
+
+p.delete:after {
+    content:'\2716';
+    cursor:pointer;
+    margin-left: 6px
+}
+
+.buy{
+    cursor:pointer;
+    color:rgb(47, 0, 255);
+}

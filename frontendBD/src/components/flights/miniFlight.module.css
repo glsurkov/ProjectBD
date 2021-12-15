@@ -1,0 +1,22 @@
+.card{
+    display:flex;
+    flex-direction: row;
+    background-color: rgba(171, 88, 204,1);
+    border-radius: 15px;
+    padding:5px;
+    font-size: 12px;
+    border:2px solid white;
+    justify-content: space-between;
+}
+.company{
+    cursor:pointer
+}
+
+.company:hover{
+    color:cornflowerblue;
+}
+
+.hotel{
+    color:rgba(171, 88, 204,1);
+    font-size: 20px;
+}
