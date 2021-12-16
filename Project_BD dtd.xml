@@ -1,0 +1,129 @@
+<ISSPECS>
+	<DESCRIPTION>
+		<TITILE>AirBook</TITLE>
+		<SUBJ>Adventures</SUBJ>
+	</DESCRIPTION>
+	<DATA>
+		<ENTITY ent_id="airport">
+			<PROPERTY>airport_id</PROPERTY>
+			<PROPERTY>airport_name</PROPERTY>
+			<PROPERTY>airport_country</PROPERTY>
+			<PROPERTY>airport_city</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="aviacompany">
+			<PROPERTY>company_id</PROPERTY>
+			<PROPERTY>company_name</PROPERTY>
+			<PROPERTY>company_phone</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="country">
+			<PROPERTY>country_name</PROPERTY>
+			<PROPERTY>population</PROPERTY>
+			<PROPERTY>capital_city</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="flight">
+			<PROPERTY>flight_id</PROPERTY>
+			<PROPERTY>company_id</PROPERTY>
+			<PROPERTY>departure_date</PROPERTY>
+			<PROPERTY>departure_time</PROPERTY>
+			<PROPERTY>departure_airport_id</PROPERTY>
+			<PROPERTY>arrival_date</PROPERTY>
+			<PROPERTY>arrival_time</PROPERTY>
+			<PROPERTY>arrival_airport_id</PROPERTY>
+			<PROPERTY>tickets_in_stock</PROPERTY>
+			<PROPERTY>ticket_price</PROPERTY>
+			<PROPERTY>active</PROPERTY>
+		<ENTITY ent_id="hotel">
+			<PROPERTY>hotel_id</PROPERTY>
+			<PROPERTY>hotel_country</PROPERTY>
+			<PROPERTY>room_price</PROPERTY>
+			<PROPERTY>rooms_in_stock</PROPERTY>
+			<PROPERTY>hotel_name</PROPERTY>
+			<PROPERTY>hotel_city</PROPERTY>
+			<PROPERTY>available</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="iamge">
+			<PROPERTY>image_id</PROPERTY>
+			<PROPERTY>hotel_id</PROPERTY>
+			<PROPERTY>image</PROPERTY>
+		</ENTITY>
+		<ENTITY ent_id="user">
+			<PROPERTY>user_id</PROPERTY>
+			<PROPERTY>username</PROPERTY>
+			<PROPERTY>password</PROPERTY>
+			<PROPERTY>role</PROPERTY>
+			<PROPERTY>balance</PROPERTY>
+		</ENTITY>
+		<RELATIONSHIP ent_ids="aviacompany flight">
+			<PROPERTY>one to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="airport flight">
+			<PROPERTY>one to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="country airport">
+			<PROPERTY>one to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="country hotel">
+			<PROPERTY>one to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="hotel image">
+			<PROPERTY>one to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="user flight">
+			<PROPERTY>many to many</PROPERTY>
+		</RELATIONSHIP>
+		<RELATIONSHIP ent_ids="user hotel">
+			<PROPERTY>many to many</PROPERTY>
+		</RELATIONSHIP>
+		<CONSTRAINT>
+		Пароли пользователей должны быть от 4 до 10 символов. В базе данных 
+		данное ограничение не указано, т.к. выполняется хэширование паролей, и они
+		хранятся в захэшированном виде. Проверка осуществляется на стороне приложения.
+		</CONSTRAINT>
+		<CONSTRAINT>
+		Имена пользователей являются уникальными.
+		</CONSTRAINT>
+		<CONSTRAINT>
+		Имена отелей, авиакомпаний, аэропортов являются уникальными.
+		</CONSTRAINT>
+		<CONSTRAINT>
+		Один пользователь может бронировать несколько билетов на один и тот же перелет.
+		<CONSTRAINT>
+		Один пользователь может бронировать несколько номеров в одном и том же отеле.
+		</CONSTRAINT>
+		<CONSTRAINT>
+		Стоимость номера в отеле указана за одни сутки.
+		</CONSTRAINT>
+	</DATA>
+	<ROLES>
+		<ROLE>
+			<TITLE>user</TITLE>
+			<RESPONSIBILITY>просмотр доступных перелетов и отелей</RESPONSIBILITY>
+			<RESPONSIBILITY>просмотр своего профиля</RESPONSIBILITY>
+			<RESPONSIBILITY>пополнение баланса пользователя</RESPONSIBILITY>
+			<RESPONSIBILITY>бронирование перелетов и номеров отлелей</RESPONSIBILITY>
+			<RESPONSIBILITY>просмотр активных и прошлых бронирований</RESPONSIBILITY>
+			<RESPONSIBILITY>добавление фотографий отеля, после отдыха в нем </RESPONSIBILITY>
+		</ROLE>
+		<ROLE>
+			<TITLE>admin</TITLE>
+			<RESPONSIBILITY>такие же возможности, что и у user</RESPONSIBILITY>
+			<RESPONSIBILITY>добавление стран, аеропортов, авиакомпаний, отелей, перелетов в систему</RESPONSIBILITY>
+			<RESPONSIBILITY>изменение стран, аеропортов, авиакомпаний, отелей, перелетов в системе</RESPONSIBILITY>
+			<RESPONSIBILITY>удаление стран, аеропортов, авиакомпаний, отелей, перелетов из системы</RESPONSIBILITY>
+			<RESPONSIBILITY>удаление фотографий пользователей</RESPONSIBILITY>
+		</ROLE>
+	</ROLES>
+	<TECHSPEC>
+		<DEVTOOLS>
+			<DEV>React</DEV>
+			<DEV>Node.js Express</DEV>
+		</DEVTOOLS>
+		<DBMS>
+			<TITLE>PostgreSQL</TITLE>
+			<VERSION>14</VERSION>
+			<REASONING>одна из самых популярны объектно-реляционных СУБД;
+			очень подробная и доступная документация;
+			поддерживает БД неограниченного размера</REASONING>
+		</DBMS>
+	</TECHSPEC>
+</ISSPECS>
