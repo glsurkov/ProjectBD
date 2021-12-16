@@ -5,7 +5,13 @@ const Airport = require("../models/Airport");
 class AviacompanyController{
     async createAviacompany(req,res){
         try{
-/*            const {company_name,company_phone,company_raiting} = req.body;*/
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newAviacompany = await Aviacompany.create(req.body);
             res.status(200).json(newAviacompany);
         }catch(e)
@@ -28,6 +34,13 @@ class AviacompanyController{
     async updateAviacompany(req,res){
         try{
             const company_id = req.query.company_id;
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newAviacompany = await Aviacompany.update(req.body,
                 {
                     where:{

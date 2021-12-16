@@ -5,7 +5,13 @@ const Hotel = require("../models/Hotel");
 class CountryController{
     async createCountry(req,res){
         try{
-            const {country_name,population,capital_city} = req.body;
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newCountry = await Country.create(req.body)
             res.json(newCountry);
         }catch(e)
@@ -30,6 +36,13 @@ class CountryController{
     async updateCountries(req,res){
         try{
             const country_name = req.body.country_name;
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newCountry = await Country.update(req.body,
                 {
                     where:{
@@ -50,16 +63,13 @@ class CountryController{
     async deleteCountry(req,res){
         try{
             const country_name = req.query.country_name;
-            if (!country_name)
-            {
-                res.status(400).json({message:"Id не указан"});
-
-            }
-            await Country.destroy({where:
-                    {
-                        country_name: country_name
-                    }})
-            return res.status(200).json({message:"Успешно удален"});
+                await Country.destroy({
+                    where:
+                        {
+                            country_name: country_name
+                        }
+                })
+                return res.status(200).json({message: "Успешно удален"});
         }catch(e)
         {
             console.log("error");

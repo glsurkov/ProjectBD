@@ -4,7 +4,13 @@ class AirportController{
 
     async createAirport(req,res){
         try{
-/*            const {airport_name,airport_country,airport_city} = req.body;*/
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             console.log(req.body);
             const newAirport = await Airport.create(req.body);
             res.status(200).json(newAirport);
@@ -27,6 +33,13 @@ class AirportController{
     async updateAirport(req,res){
         try{
             const airport_id = req.query.airport_id;
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newAirport = await Airport.update(req.body,
                 {
                 where:{

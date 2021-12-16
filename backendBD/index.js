@@ -228,7 +228,7 @@ app.use('/airports',airportRouter);
 app.use('/auth',authRouter);
 
 
-db.sync({force:true})
+db.sync({alter:true})
     .then(() => app.listen(PORT, () => console.log('Server started')))
     .catch(err => console.log(err))
 

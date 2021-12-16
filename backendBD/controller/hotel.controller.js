@@ -14,6 +14,13 @@ const Airport = require("../models/Airport");
 class HotelController{
     async createHotel(req,res){
         try{
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newHotel = await Hotel.create(req.body)
             res.status(200).json(newHotel);
         }catch(e)
@@ -55,6 +62,13 @@ class HotelController{
     async updateHotels(req,res){
         try{
             const hotel_id = req.query.hotel_id;
+            for(let prop in req.body)
+            {
+                if(req.body[prop] === '')
+                {
+                    req.body[prop] = null
+                }
+            }
             const newHotel = await Hotel.update(req.body,
                 {
                     where:{

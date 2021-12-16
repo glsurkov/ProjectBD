@@ -58,7 +58,10 @@ const Flight = db.define('flight',{
         },
         ticket_price:{
             type:Sequelize.INTEGER,
-            allowNull:false
+            allowNull:false,
+            validate:{
+                min:0
+            }
         },
         active:{
             type:Sequelize.INTEGER,

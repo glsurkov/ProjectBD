@@ -90,7 +90,7 @@ class authContoller {
                         {
                           user_id : +id
                         },
-                    attributes:['username','contact_number','role','balance','user_id']
+                    attributes:['username','role','balance','user_id']
                 })
                 console.log(user);
                 res.json(user)

@@ -77,54 +77,58 @@ class BookController{
         console.log(payment);
 
         let transaction;
-
         try{
-            transaction = await db.transaction();
+            if(departure_date>arrival_date) {
+                transaction = await db.transaction();
 
-            await Hotel.update(
-                {
-                    rooms_in_stock: sequelize.literal('rooms_in_stock - 1')
-                },
-                {
-                    where:{
-                        hotel_id:hotel
+                await Hotel.update(
+                    {
+                        rooms_in_stock: sequelize.literal('rooms_in_stock - 1')
                     },
-                    transaction
-                }
-            );
+                    {
+                        where: {
+                            hotel_id: hotel
+                        },
+                        transaction
+                    }
+                );
 
-            await User.update(
-                {
-                    balance: sequelize.literal(`balance - ${payment}`)
-                },
-                {
-                    where:{
-                        user_id: user
+                await User.update(
+                    {
+                        balance: sequelize.literal(`balance - ${payment}`)
                     },
-                    transaction
-                }
-            );
+                    {
+                        where: {
+                            user_id: user
+                        },
+                        transaction
+                    }
+                );
 
-            await UserHotel.create(
-                {
-                    user_id:user,
-                    hotel_id:hotel,
-                    arrival_date:arrival,
-                    departure_date:departure
-                },
-                {
-                    transaction
-                }
-            )
+                await UserHotel.create(
+                    {
+                        user_id: user,
+                        hotel_id: hotel,
+                        arrival_date: arrival,
+                        departure_date: departure
+                    },
+                    {
+                        transaction
+                    }
+                )
 
-            await transaction.commit();
-            res.status(200).json({message:"Успешно забронирован"})
-
+                await transaction.commit();
+                res.status(200).json({message: "Успешно забронирован"})
+            }
+            else {
+                res.status(500).json({message: "ERROR"})
+            }
         }catch(e)
         {
             res.status(500).json({message:`${e}`})
             if (transaction) await transaction.rollback();
         }
+
     }
 
 

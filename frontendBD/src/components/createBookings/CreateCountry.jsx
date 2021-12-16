@@ -9,7 +9,7 @@ const CreateCountry = () => {
     const [sent,setSent] = useState(false)
     const [error2,setError] = useState(undefined)
     const [name,setName] = useState('')
-    const [population,setPopulation] = useState('')
+    const [population,setPopulation] = useState(null)
     const [city,setCity] = useState('')
 
     const {token} = useContext(AuthContext)

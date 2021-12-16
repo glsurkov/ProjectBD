@@ -19,6 +19,9 @@ const Hotel = db.define('hotel',{
         room_price:{
             type:Sequelize.INTEGER,
             allowNull:false,
+            validate:{
+                min:0
+            }
         },
         rooms_in_stock:{
             type:Sequelize.INTEGER,

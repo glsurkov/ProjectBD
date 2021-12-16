@@ -22,6 +22,12 @@ class FlightController {
                 tickets_in_stock,
                 ticket_price
             } = req.body;
+
+              const dep_date = new Date(`${departure_date} ${departure_time}`)
+              const arr_date = new Date(`${arrival_date} ${arrival_time}`)
+
+              if(dep_date < arr_date){
+
               const aviacompany = await Aviacompany.findOne({attributes:['company_id'],where:{
                     company_name:company_name
                 }});
@@ -46,6 +52,11 @@ class FlightController {
             )
 
             res.status(200).json(newFlight);
+              }
+              else
+              {
+                  res.status(400).json({message:'error'})
+              }
 
         } catch (e) {
             res.status(400).json({message:'Error'})
