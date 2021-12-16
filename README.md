@@ -19,7 +19,7 @@ AirBook
 |username| VARCHAR(256)| NOT NULL UNIQUE|
 |password| VARCHAR(256)| NOT NULL
 |role| VARCHAR(256)| NOT NULL|
-|balance| VARCHAR(256)| NOT NULL CHECK(balance>0)|
+|balance| VARCHAR(256)| NOT NULL CHECK(balance>=0)|
 
 ### countries
 Информация о странах в системе.
@@ -56,7 +56,7 @@ AirBook
 |rooms_in_stock|INTEGER|NOT NULL CHECK(room_price>0)|
 |hotel_name|VARCHAR(256)|NOT NULL UNIQUE|
 |hotel_city|VARCHAR(256)|NOT NULL|
-|available|INTEGER|NOT NULL DEFAULT 1 CHECK(available>0) CHECK(available<1)|
+|available|INTEGER|NOT NULL DEFAULT 1 CHECK(available>=0) CHECK(available<=1)|
 
 UNIQUE(book_id, user_id)
 
@@ -72,9 +72,9 @@ UNIQUE(book_id, user_id)
 |arrival_date|DATE|NOT NULL|
 |arrival_time|TIME WITHOUT TIMEZONE|NOT NULL|
 |arrival_airport_id|INTEGER|NOT NULL FOREIGN KEY(airports) ON DELETE CASCADE|
-|tickets_in_stock|INTEGER|NOT NULL CHECK(tickets_in_stock>0)|
-|ticket_price|INETGER|NOT NULL CHECK(ticket_price>0)|
-|active|INTEGER|NOT NULL DEFAULT 1 CHECK(active>0) CHECK(active<1)|
+|tickets_in_stock|INTEGER|NOT NULL CHECK(tickets_in_stock=>0)|
+|ticket_price|INETGER|NOT NULL CHECK(ticket_price=>0)|
+|active|INTEGER|NOT NULL DEFAULT 1 CHECK(active>0) CHECK(active<=1)|
 
 ### users_flights
 Бронирования перелетов, совершенные пользователями.
@@ -93,7 +93,7 @@ UNIQUE(book_id, user_id)
 |hotel_id| INTEGER |NOT NULL FOREIGN KEY(hotels) ON DELETE CASCADE|
 |arrival_date|DATE|NOT NULL|
 |departure_date|DATE|NOT NULL|
-|active|INTEGER|NOT NULL DEFAULT 1 CHECK(active>0) CHECK(active<1)|
+|active|INTEGER|NOT NULL DEFAULT 1 CHECK(active=>0) CHECK(active<=1)|
 
 ### images
 Информация о фотографиях, загружаемых пользователями после отдыха в отеле.
