@@ -56,11 +56,11 @@ const CreateFlight = () => {
     return (
         <div className={cl.SignForm}>
             <input value = {name} onChange = {e => setName(e.target.value)} className = {cl.Input} placeholder="Название авиакомпании"/>
-            <input value = {departure_date} onChange = {e => setDeparture_date(e.target.value)} className = {cl.Input} placeholder="Дата вылета"/>
-            <input value = {departure_time} onChange = {e => setDeparture_time(e.target.value)} className = {cl.Input} placeholder="Время вылета"/>
+            <input value = {departure_date} onChange = {e => setDeparture_date(e.target.value)} className = {cl.Input} placeholder="Дата вылета (пример: 2021-12-15)"/>
+            <input value = {departure_time} onChange = {e => setDeparture_time(e.target.value)} className = {cl.Input} placeholder="Время вылета (пример: 16:30)"/>
             <input value = {departure_airport_name} onChange = {e => setDeparture_airport_name(e.target.value)} className = {cl.Input} placeholder="Аэропорт вылета"/>
-            <input value = {arrival_date} onChange = {e => setArrival_date(e.target.value)} className = {cl.Input} placeholder="Дата прилета"/>
-            <input value = {arrival_time} onChange = {e => setArrival_time(e.target.value)} className = {cl.Input} placeholder="Время прилета"/>
+            <input value = {arrival_date} onChange = {e => setArrival_date(e.target.value)} className = {cl.Input} placeholder="Дата прилета (пример: 2021-12-15)"/>
+            <input value = {arrival_time} onChange = {e => setArrival_time(e.target.value)} className = {cl.Input} placeholder="Время прилета (пример: 18:30)"/>
             <input value = {arrival_airport_name} onChange = {e => setArrival_airport_name(e.target.value)} className = {cl.Input} placeholder="Аэропорт прилета"/>
             <input value = {tickets_in_stock} onChange = {e => setTickets_in_stock(e.target.value)} className = {cl.Input} placeholder="Количество билетов"/>
             <input value = {ticket_price} onChange = {e => setTicket_price(e.target.value)} className = {cl.Input} placeholder="Цена билета"/>
